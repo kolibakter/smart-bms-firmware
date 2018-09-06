@@ -7,6 +7,12 @@ import subprocess
 # print defines
 
 description = subprocess.Popen(
-    ["git", "describe", "--always"], stdout=subprocess.PIPE).stdout.read().strip()
+    [
+        "git",
+        "describe",
+        "--always"],
+    stdout=subprocess.PIPE).stdout.read().strip().replace(
+    ".",
+    "_")
 
-env.Replace(PROGNAME="firmware_%s" % description)
+env.Replace(PROGNAME="firmware-%s" % description)
