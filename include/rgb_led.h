@@ -20,9 +20,9 @@ public:
   static constexpr Color CYAN = Color{0, 1, 1};
   static constexpr Color WHITE = Color{1, 1, 1};
 
-  RGBLED(PinName red, PinName green, PinName blue, bool active_low = false)
+  RGBLED(const PinName red, const PinName green, const PinName blue, const bool active_low = false)
       : red_(red, active_low), blue_(blue, active_low), green_(green, active_low) {}
-  inline void set(Color color) {
+  inline void set(const Color color) {
     red_ = color.red;
     blue_ = color.blue;
     green_ = color.green;
