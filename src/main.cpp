@@ -1,5 +1,5 @@
-#include "rgb_led.h"
 #include <mbed.h>
+#include <rgb_led.h>
 
 int main() {
   RGBLED status_led(PC_6, PC_7, PC_8, true);

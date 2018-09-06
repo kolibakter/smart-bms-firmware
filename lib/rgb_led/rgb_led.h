@@ -1,6 +1,6 @@
 #pragma once
 
-#include "led.h"
+#include <led.h>
 #include <mbed.h>
 
 class RGBLED {
