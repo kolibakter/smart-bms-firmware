@@ -1,12 +1,21 @@
 language: python
 python:
-  - '2.7'
+- '2.7'
 sudo: false
 cache:
   directories:
-    - ~/.platformio
+  - ~/.platformio
 install:
-  - pip install -U platformio
-  - platformio update
+- pip install -U platformio
+- platformio update
 script:
-  - platformio run
+- platformio run
+deploy:
+  provider: releases
+  api_key:
+    secure: iM22//oU4Hkyq0I1BuNdsRTe+NWDpITS2ggg5uRfuIHAisMD2frkPFbTTbGyL6dwMQ2ozHBWC/XdjyUoJ5hAsnHA8N8Ob3fMppcEDuepssUlh6qS7XemXXfqWxbquvNrGeUdQBh8LpWjoBDrALt6Mi2XHkheoEQo0zMtuj9JD9e/5azvwf/0crqX/3gZcGFIBLXCLjXD90BCCRRDdjQVS+5F3AW8d3mH04EsvAGxX7sals7K1CbQP+2+9X89ADNkWAVtb3iZEJjooxv023Bh0NYk7Ya7PrY74cHMxtDMi1Nq/r4hWMX98Der9gFzZMUOi0AV6Tf4sMNKbCh75QgDiNMu3zs2ukfsZTO2wZlqhSm5WclV7JmvLtZNppFPklAKFZSc7VJ9zrPktdmXPXsTnj6vA41H9DzR9drsL+AUnG2YQ41LAzsxg7Fc9+fqg79edcqAzq5LQl9YiZYoBInbkxanH8Kv0GcK53WMBd/PzJDkzMtzipDa5uS46oEECer00XNrHmRyzhEvGFK3dEeYQlgrowdaeGRsZf03KqAOUeRxlgmQp3+f5dHl+15zOGDPjHzJXreH+eQ2Vz9tYvYHXxfMuqnuVwc6yheRc8tzDm1uwBBJ8LGz6HW8Eob3K0/Gw8yWDkuYKr8NunJYk/7cHqwF/i5IH33kIx4eEqDdJUU=
+  file_glob: true
+  file: ".pioenvs/nucleo_l073rz/firmware*.bin"
+  skip_cleanup: true
+  on:
+    tags: true
