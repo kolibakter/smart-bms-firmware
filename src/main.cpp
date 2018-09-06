@@ -4,10 +4,6 @@
 int main() {
   LED test_led(PC_6, true);
 
-  // put your setup code here, to run once:
-
-  test_led.off();
-
   while (1) {
     test_led.on();
     wait_ms(100);
