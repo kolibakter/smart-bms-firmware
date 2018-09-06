@@ -1,13 +1,13 @@
 #include <mbed.h>
-#include <rgb_led.h>
+#include <pwm_led.h>
 
 int main() {
-  RGBLED status_led(PC_6, PC_7, PC_8, true);
+  PWMLED status_led(PC_6, true);
 
   while (1) {
-    status_led.set(RGBLED::WHITE);
+    status_led = 0.8f;
     wait_ms(100);
-    status_led.set(RGBLED::BLACK);
+    status_led = 0.1f;
     wait_ms(900);
   }
 }
