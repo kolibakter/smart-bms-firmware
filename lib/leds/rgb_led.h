@@ -1,6 +1,6 @@
 #pragma once
 
-#include "led.h"
+#include <led.h>
 #include <mbed.h>
 
 class RGBLED {
@@ -21,7 +21,7 @@ public:
   static constexpr Color WHITE = Color{1, 1, 1};
 
   RGBLED(const PinName red, const PinName green, const PinName blue, const bool active_low = false)
-      : red_(red, active_low), blue_(blue, active_low), green_(green, active_low) {}
+      : red_(red, active_low), green_(green, active_low), blue_(blue, active_low)  {}
   inline void set(const Color color) {
     red_ = color.red;
     blue_ = color.blue;
