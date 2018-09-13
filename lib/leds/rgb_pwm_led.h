@@ -1,16 +1,15 @@
 #pragma once
 
+#include "pwm_led.h"
 #include <mbed.h>
-#include <pwm_led.h>
 
 class RGBPWMLED {
-  PWMLED red_, green_, blue_;
-
+public:
+  float brightness_;
   struct Color {
     float red, green, blue;
   };
 
-public:
   static constexpr Color BLACK = Color{0.0f, 0.0f, 0.0f};
   static constexpr Color WHITE = Color{1.0f, 1.0f, 1.0f};
 
@@ -22,17 +21,19 @@ public:
   static constexpr Color PURPLE = Color{1.0f, 0.0f, 1.0f};
 
   RGBPWMLED(const PinName red, const PinName green, const PinName blue,
-            const bool active_low = false)
-      : red_(red, active_low), green_(green, active_low), blue_(blue, active_low) {}
+            const float brightness = 1.0f, const bool active_low = false);
 
   inline void set(const Color color) {
-    red_ = color.red;
-    blue_ = color.blue;
-    green_ = color.green;
+    red_ = color.red * brightness_;
+    blue_ = color.blue * brightness_;
+    green_ = color.green * brightness_;
   };
 
   RGBPWMLED &operator=(const Color value) {
     set(value);
     return *this;
   }
+
+private:
+  PWMLED red_, green_, blue_;
 };

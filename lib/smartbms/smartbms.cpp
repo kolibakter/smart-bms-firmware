@@ -1,6 +1,6 @@
 #include "smartbms.h"
 
-SmartBMS::SmartBMS() : ok_(true), status_led_(PC_6, PC_7, PC_8, true) {}
+SmartBMS::SmartBMS() : ok_(true), status_led_(PC_6, PC_7, PC_8, 0.1f, true) {}
 
 void SmartBMS::run() {
   while (ok_) {

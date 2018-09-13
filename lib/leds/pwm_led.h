@@ -7,8 +7,7 @@ class PWMLED {
   bool active_low_;
 
 public:
-  PWMLED(const PinName pin_id, const bool active_low = false)
-      : led_pin_(pin_id), active_low_(active_low) {}
+  PWMLED(const PinName pin_id, const bool active_low = false);
 
   void setBrightness(const float brightness);
 
