@@ -1,6 +1,6 @@
 #pragma once
 
-#include <rgb_pwm_led.h>
+#include <status_led.h>
 
 class SmartBMS {
 public:
@@ -9,5 +9,5 @@ public:
 
 private:
   bool ok_;
-  RGBPWMLED status_led_;
+  StatusLED status_led_;
 };

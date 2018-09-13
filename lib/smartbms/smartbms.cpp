@@ -1,20 +1,14 @@
 #include "smartbms.h"
 
-SmartBMS::SmartBMS() : ok_(true), status_led_(PC_6, PC_7, PC_8, 0.1f, true) {}
+SmartBMS::SmartBMS() : ok_(true), status_led_({PC_6, PC_7, PC_8, 1.0f, true}) {}
 
 void SmartBMS::run() {
   while (ok_) {
-    status_led_ = RGBPWMLED::RED;
-    wait_ms(1000);
-    status_led_ = RGBPWMLED::YELLOW;
-    wait_ms(1000);
-    status_led_ = RGBPWMLED::GREEN;
-    wait_ms(1000);
-    status_led_ = RGBPWMLED::CYAN;
-    wait_ms(1000);
-    status_led_ = RGBPWMLED::BLUE;
-    wait_ms(1000);
-    status_led_ = RGBPWMLED::PURPLE;
-    wait_ms(1000);
+    status_led_ << StatusLED::RAINBOW;
+    wait(20);
+    status_led_ << StatusLED::IDLE;
+    wait(20);
+    status_led_ << StatusLED::ERROR;
+    wait(20);
   }
 }

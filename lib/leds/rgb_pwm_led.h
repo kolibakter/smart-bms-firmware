@@ -29,6 +29,12 @@ public:
     green_ = color.green * brightness_;
   };
 
+  inline void off() {
+    red_.off();
+    green_.off();
+    blue_.off();
+  }
+
   RGBPWMLED &operator=(const Color value) {
     set(value);
     return *this;
