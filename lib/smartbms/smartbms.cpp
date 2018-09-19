@@ -14,7 +14,7 @@ void SmartBMS::run() {
   while (ok_) {
     tli_.update();
     battery_msg_.header.seq++;
-    battery_msg_.current = static_cast<float>(tli_.frame_.data);
+    battery_msg_.current = tli_.current_;
     battery_pub_.publish(&battery_msg_);
     nh_.loginfo("publishing");
     nh_.spinOnce();

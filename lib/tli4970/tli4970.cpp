@@ -7,7 +7,15 @@ TLI4970::TLI4970(SPI *spi, const PinName select_pin, const PinName overcurrent_p
 
 void TLI4970::update() {
   ss_.select();
-  frame_.data = static_cast<uint16_t>(spi_->write(0x00));
+  frame_.data = spi_->write(0x00);
   ss_.deselect();
-  overcurrent_ = ocd_;
+  // TODO: check parity
+  if (frame_.status) {
+    // TODO: Update status
+  } else {
+    overcurrent_ = frame_.ocd;
+    updateCurrent();
+  }
 }
+
+void TLI4970::updateCurrent() { current_ = (static_cast<float>(frame_.current) - 4096) / 80.0f; }

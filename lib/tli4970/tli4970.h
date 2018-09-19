@@ -23,7 +23,10 @@ public:
   TLI4970(SPI *spi, const PinName select_pin, const PinName overcurrent_pin);
 
   void update();
-  Frame frame_;
+
+  // Storage
+  bool overcurrent_ = false;
+  float current_ = 0.0f;
 
 private:
   // Comm
@@ -32,5 +35,8 @@ private:
   DigitalIn ocd_;
 
   // Storage
-  bool overcurrent_ = false;
+  Frame frame_;
+
+  // Functions
+  void updateCurrent();
 };
