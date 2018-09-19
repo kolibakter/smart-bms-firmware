@@ -2,8 +2,8 @@
 
 #include <comm.h>
 #include <ros.h>
+#include <sensor_msgs/BatteryState.h>
 #include <status_led.h>
-#include <std_msgs/Int32.h>
 
 class BMSHardware : public MbedHardware {
 public:
@@ -16,11 +16,15 @@ public:
   void run();
 
 private:
-  bool ok_;
+  // Constants
+  static constexpr const char *battery_topic_ = "battery/status";
+
+  // Variables
+  bool ok_ = true;
   StatusLED status_led_;
 
-  // ROS things
+  // ROS
   ros::NodeHandle_<BMSHardware> nh_;
-  std_msgs::Int32 int_;
-  ros::Publisher pub_int_;
+  sensor_msgs::BatteryState battery_msg_;
+  ros::Publisher battery_pub_;
 };
