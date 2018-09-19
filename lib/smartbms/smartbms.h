@@ -4,6 +4,7 @@
 #include <ros.h>
 #include <sensor_msgs/BatteryState.h>
 #include <status_led.h>
+#include <tli4970.h>
 
 class BMSHardware : public MbedHardware {
 public:
@@ -21,7 +22,13 @@ private:
 
   // Variables
   bool ok_ = true;
+
+  // IO objects
+  SPI spi_;
+
+  // Hardware objects
   StatusLED status_led_;
+  TLI4970 tli_;
 
   // ROS
   ros::NodeHandle_<BMSHardware> nh_;
