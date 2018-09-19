@@ -8,15 +8,15 @@ public:
   union Frame {
     uint16_t data;
     struct {
-      uint16_t status : 1, parity : 1;
+      uint16_t : 14, parity : 1, status : 1;
     };
 
     struct {
-      uint16_t : 2, ocd : 1, current : 13;
+      uint16_t current : 13, ocd : 1;
     };
 
     struct {
-      uint16_t : 2, hw_error : 1, overload_error : 1, temp_error : 1, comm_error : 1;
+      uint16_t : 10, comm_error : 1, temp_error : 1, overload_error : 1, hw_error : 1;
     };
   };
 
