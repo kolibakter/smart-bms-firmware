@@ -39,4 +39,5 @@ private:
 
   // Functions
   void updateCurrent();
+  bool checkParity();
 };
